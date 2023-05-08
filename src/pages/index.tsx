@@ -231,7 +231,7 @@ export default function Home() {
         <div className="flex flex-row gap-5 p-5 self-start w-full">
           <p className="text-2xl font-bold ">Sources</p>
           <textarea
-            rows="5"
+            rows={5}
             name="sources"
             value={sources}
             onChange={handleChange}
@@ -308,7 +308,7 @@ export default function Home() {
           </>
         ) : (
           <div className="flex flex-row gap-4 p-5 self-start w-full items-center">
-            <p className="text-2xl font-bold w-64 ">Student's Full Name</p>
+            <p className="text-2xl font-bold w-64 ">Student&apos;s Full Name</p>
             <input
               className="border w-full rounded-lg p-3 "
               name="name"

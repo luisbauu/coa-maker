@@ -1,6 +1,5 @@
 import fs from "fs";
-import path from "path";
-import { degrees, PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import { PDFDocument } from "pdf-lib";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -12,7 +11,7 @@ export const config = {
   },
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const GroupPDF = async (req: NextApiRequest, res: NextApiResponse) => {
   let member1 = "",
     member2 = "",
     member3 = "",
@@ -91,3 +90,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader("Content-Type", "application/pdf");
   res.status(200).end(pdfBytes);
 };
+
+export default GroupPDF;

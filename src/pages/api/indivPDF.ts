@@ -12,7 +12,7 @@ export const config = {
   },
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const IndivPDF = async (req: NextApiRequest, res: NextApiResponse) => {
   let member1 = "";
 
   const {
@@ -63,3 +63,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader("Content-Type", "application/pdf");
   res.status(200).end(pdfBytes);
 };
+
+export default IndivPDF;
