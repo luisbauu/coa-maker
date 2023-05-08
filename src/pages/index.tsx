@@ -75,7 +75,7 @@ export default function Home() {
     }
 
     if (!type) {
-      toast.error("Please select a type.");
+      toast.error("Please select a type of submission");
       return;
     }
 
@@ -144,6 +144,7 @@ export default function Home() {
             className="border w-full rounded-lg p-2"
           />
         </div>
+        <p className=" self-center text-2xl font-bold pb-3">Type</p>
         <div className="flex flex-row gap-5 self-center">
           <label className="text-lg font-bold">
             <input
