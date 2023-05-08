@@ -1,124 +1,303 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import { useState } from "react";
+import { ChangeEvent } from "react";
+import download from "downloadjs";
 
 export default function Home() {
+  const [members, setMembers] = useState([{ name: "" }]);
+  const [title, setTitle] = useState<string>("");
+  const [type, setType] = useState<string>("");
+  const [specifiedType, setSpecifiedType] = useState<string>("");
+  const [date, setDate] = useState<string>(
+    new Date().toISOString().substring(0, 10)
+  );
+  const [sources, setSources] = useState<string>("");
+  const [courseCodeSection, setCourseCodeSection] = useState<string>("");
+  const [courseTitle, setCourseTitle] = useState<string>("");
+  const [courseInstructor, setCourseInstructor] = useState<string>("");
+
+  const [docType, setDocType] = useState(true);
+  const [pdf, setPdf] = useState<string>();
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+
+    const inputMap: Record<
+      string,
+      React.Dispatch<React.SetStateAction<string>>
+    > = {
+      title: setTitle,
+      type: setType,
+      specifiedType: setSpecifiedType,
+      date: setDate,
+      sources: setSources,
+      courseCodeSection: setCourseCodeSection,
+      courseTitle: setCourseTitle,
+      courseInstructor: setCourseInstructor,
+    };
+
+    inputMap[name](value);
+  };
+
+  const handleFormChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    let data: any = [...members];
+    data[index][event.target.name] = event.target.value;
+    setMembers(data);
+  };
+
+  const addFields = () => {
+    if (members.length >= 5) return;
+    let object = {
+      name: "",
+    };
+    setMembers([...members, object]);
+  };
+
+  const removeFields = (index: number) => {
+    let data = [...members];
+    data.splice(index, 1);
+    setMembers(data);
+  };
+
+  const generatePdf = async (e: any) => {
+    let res;
+    e.preventDefault();
+
+    const requestBody = {
+      members,
+      title,
+      type,
+      specifiedType,
+      date,
+      sources,
+      courseCodeSection,
+      courseTitle,
+      courseInstructor,
+    };
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    };
+
+    if (docType) {
+      res = await fetch("/api/groupPDF", requestOptions);
+    } else {
+      res = await fetch("/api/indivPDF", requestOptions);
+    }
+
+    const pdfBlob = await res.blob();
+
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+    setPdf(pdfUrl);
+
+    download(pdfBlob, "COA.pdf", "application/pdf");
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <main className="flex min-h-screen flex-col items-center p-24 gap-5">
+      <h1 className="text-6xl font-bold">DISCS COA Maker</h1>
+      <p className="text-xl font-bold">
+        A simple tool to generate a Certificate of Authenticity for all your
+        academic requirements.
+      </p>
+      <div className="flex flex-row gap-2">
+        <p>Group</p>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            value=""
+            className="sr-only peer"
+            onClick={() => setDocType(!docType)}
+          />
+          <div className="w-11 h-6 bg-blue-600 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+        </label>
+        <p>Individual</p>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <form>
+          <div className="flex flex-row">
+            <p className="border p-4">Title</p>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleChange}
+              className="border p-4"
             />
-          </a>
-        </div>
+          </div>
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="Program"
+              checked={type === "Program"}
+              onChange={handleChange}
+            />
+            Program
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="Project"
+              checked={type === "Project"}
+              onChange={handleChange}
+            />
+            Project
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="Report"
+              checked={type === "Report"}
+              onChange={handleChange}
+            />
+            Report
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="Paper"
+              checked={type === "Paper"}
+              onChange={handleChange}
+            />
+            Paper
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="other"
+              checked={type === "other"}
+              onChange={handleChange}
+            />
+            Other
+          </label>
+          <br />
+          {type === "other" && (
+            <input
+              type="text"
+              name="specifiedType"
+              value={specifiedType}
+              onChange={handleChange}
+              placeholder="Please specify"
+            />
+          )}
+          <br />
+
+          <div className="flex flex-row">
+            <p className="border p-4">Date</p>
+            <input
+              type="date"
+              name="date"
+              value={date}
+              onChange={handleChange}
+              className="border p-4"
+            />
+          </div>
+
+          <div className="flex flex-row">
+            <p className="border p-4">Sources</p>
+            <textarea
+              name="sources"
+              value={sources}
+              onChange={handleChange}
+              className="border p-4"
+            />
+          </div>
+
+          <div className="flex flex-row">
+            <p className="border p-4">Course Code and Section</p>
+            <input
+              type="text"
+              name="courseCodeSection"
+              value={courseCodeSection}
+              onChange={handleChange}
+              className="border p-4"
+            />
+          </div>
+
+          <div className="flex flex-row">
+            <p className="border p-4">Course Title</p>
+            <input
+              type="text"
+              name="courseTitle"
+              value={courseTitle}
+              onChange={handleChange}
+              className="border p-4"
+            />
+          </div>
+
+          <div className="flex flex-row">
+            <p className="border p-4">Course Instructor</p>
+            <input
+              type="text"
+              name="courseInstructor"
+              value={courseInstructor}
+              onChange={handleChange}
+              className="border p-4"
+            />
+          </div>
+          {docType ? (
+            <>
+              {members.map((form, index) => {
+                return (
+                  <div key={index} className="flex flex-row">
+                    <p className="border p-4">Member {index + 1}</p>
+                    <input
+                      className="border p-4"
+                      name="name"
+                      placeholder="Name"
+                      onChange={(event) => handleFormChange(event, index)}
+                      value={form.name}
+                    />
+                    <button
+                      className="border p-4"
+                      onClick={() => removeFields(index)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                );
+              })}
+              {members.length < 5 && (
+                <button onClick={addFields}>Add More..</button>
+              )}
+            </>
+          ) : (
+            <div className="flex flex-row">
+              <p className="border p-4">Student's Full Name</p>
+              <input
+                className="border p-4"
+                name="name"
+                placeholder="Name"
+                onChange={(event) => handleFormChange(event, 0)}
+                value={members[0].name}
+              />
+            </div>
+          )}
+
+          <br />
+          <button onClick={(e) => generatePdf(e)}>Submit</button>
+        </form>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {pdf && (
+        <embed src={pdf} type="application/pdf" width="500px" height="500px" />
+      )}
     </main>
-  )
+  );
 }
