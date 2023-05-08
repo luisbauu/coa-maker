@@ -320,16 +320,23 @@ export default function Home() {
         )}
 
         <button
-          className="mt-20 text-2xl bg-blue-600 text-white px-10 py-5 hover:bg-blue-300 rounded-xl font-semibold self-center "
+          className="my-10 text-2xl bg-blue-600 text-white px-10 py-5 hover:bg-blue-300 rounded-xl font-semibold self-center "
           onClick={(e) => generatePdf(e)}
         >
           Create PDF!
         </button>
+        {pdf && (
+          <embed
+            src={pdf}
+            type="application/pdf"
+            width="600px"
+            height="600px"
+          />
+        )}
+        <p className="self-center text-xs py-2">
+          Developed by Jose Luis Bautista
+        </p>
       </form>
-
-      {pdf && (
-        <embed src={pdf} type="application/pdf" width="600px" height="600px" />
-      )}
     </main>
   );
 }
