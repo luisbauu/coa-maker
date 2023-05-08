@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChangeEvent } from "react";
 import download from "downloadjs";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const [members, setMembers] = useState([{ name: "" }]);
@@ -49,7 +50,8 @@ export default function Home() {
     setMembers(data);
   };
 
-  const addFields = () => {
+  const addFields = (e: any) => {
+    e.preventDefault();
     if (members.length >= 5) return;
     let object = {
       name: "",
@@ -66,6 +68,16 @@ export default function Home() {
   const generatePdf = async (e: any) => {
     let res;
     e.preventDefault();
+
+    if (members.length === 0) {
+      toast.error("Please add at least one member.");
+      return;
+    }
+
+    if (!type) {
+      toast.error("Please select a type.");
+      return;
+    }
 
     const requestBody = {
       members,
@@ -100,14 +112,15 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 gap-5">
-      <h1 className="text-6xl font-bold">DISCS COA Maker</h1>
-      <p className="text-xl font-bold">
+    <main className="flex min-h-screen flex-col items-center align-middle py-10">
+      <Toaster />
+      <h1 className="text-6xl font-bold py-5">DISCS COA Maker v1</h1>
+      <p className="text-xl font-bold text-center w-[600px]">
         A simple tool to generate a Certificate of Authenticity for all your
         academic requirements.
       </p>
-      <div className="flex flex-row gap-2">
-        <p>Group</p>
+      <div className="flex flex-row gap-2 py-5 items-center">
+        <p className="font-semibold text-lg">Group</p>
         <label className="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
@@ -115,188 +128,206 @@ export default function Home() {
             className="sr-only peer"
             onClick={() => setDocType(!docType)}
           />
-          <div className="w-11 h-6 bg-blue-600 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          <div className="w-11 h-6 bg-blue-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
         </label>
-        <p>Individual</p>
+        <p className="font-semibold text-lg">Individual</p>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <form>
-          <div className="flex flex-row">
-            <p className="border p-4">Title</p>
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={handleChange}
-              className="border p-4"
-            />
-          </div>
-          <label>
+      <form className="flex flex-col justify-center w-[600px]">
+        <div className="flex flex-row gap-5 p-5 items-center w-full">
+          <p className="text-2xl font-bold ">Title</p>
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={handleChange}
+            className="border w-full rounded-lg p-2"
+          />
+        </div>
+        <div className="flex flex-row gap-5 self-center">
+          <label className="text-lg font-bold">
             <input
               type="radio"
               name="type"
               value="Program"
               checked={type === "Program"}
               onChange={handleChange}
+              className="mr-2"
             />
             Program
           </label>
-          <br />
-          <label>
+          <label className="text-lg font-bold">
             <input
               type="radio"
               name="type"
               value="Project"
               checked={type === "Project"}
               onChange={handleChange}
+              className="mr-2"
             />
             Project
           </label>
-          <br />
-          <label>
+          <label className="text-lg font-bold">
             <input
               type="radio"
               name="type"
               value="Report"
               checked={type === "Report"}
               onChange={handleChange}
+              className="mr-2"
             />
             Report
           </label>
-          <br />
-          <label>
+          <label className="text-lg font-bold">
             <input
               type="radio"
               name="type"
               value="Paper"
               checked={type === "Paper"}
               onChange={handleChange}
+              className="mr-2"
             />
             Paper
           </label>
-          <br />
-          <label>
+        </div>
+
+        <div className="flex flex-row self-center items-center ">
+          <label className="text-lg font-bold p-4 ">
             <input
               type="radio"
               name="type"
               value="other"
               checked={type === "other"}
               onChange={handleChange}
+              className="mr-2"
             />
             Other
           </label>
-          <br />
           {type === "other" && (
             <input
+              className="border rounded-lg p-2"
               type="text"
               name="specifiedType"
               value={specifiedType}
               onChange={handleChange}
-              placeholder="Please specify"
+              placeholder="Please specify type"
             />
           )}
           <br />
+        </div>
 
-          <div className="flex flex-row">
-            <p className="border p-4">Date</p>
-            <input
-              type="date"
-              name="date"
-              value={date}
-              onChange={handleChange}
-              className="border p-4"
-            />
-          </div>
+        <div className="flex flex-row gap-5 p-5 self-start items-center">
+          <p className="text-2xl font-bold ">Date</p>
+          <input
+            type="date"
+            name="date"
+            value={date}
+            onChange={handleChange}
+            className="text-xl border rounded-lg p-2"
+          />
+        </div>
 
-          <div className="flex flex-row">
-            <p className="border p-4">Sources</p>
-            <textarea
-              name="sources"
-              value={sources}
-              onChange={handleChange}
-              className="border p-4"
-            />
-          </div>
+        <div className="flex flex-row gap-5 p-5 self-start w-full">
+          <p className="text-2xl font-bold ">Sources</p>
+          <textarea
+            rows="5"
+            name="sources"
+            value={sources}
+            onChange={handleChange}
+            className="border w-full rounded-lg p-2"
+          />
+        </div>
 
-          <div className="flex flex-row">
-            <p className="border p-4">Course Code and Section</p>
-            <input
-              type="text"
-              name="courseCodeSection"
-              value={courseCodeSection}
-              onChange={handleChange}
-              className="border p-4"
-            />
-          </div>
+        <div className="flex flex-row gap-5 p-5 self-start w-full">
+          <p className="text-2xl font-bold ">Course Code & Section</p>
+          <input
+            type="text"
+            name="courseCodeSection"
+            value={courseCodeSection}
+            onChange={handleChange}
+            className="border w-full rounded-lg p-2"
+          />
+        </div>
 
-          <div className="flex flex-row">
-            <p className="border p-4">Course Title</p>
-            <input
-              type="text"
-              name="courseTitle"
-              value={courseTitle}
-              onChange={handleChange}
-              className="border p-4"
-            />
-          </div>
+        <div className="flex flex-row gap-5 p-5 self-start w-full">
+          <p className="text-2xl font-bold  ">Course Title</p>
+          <input
+            type="text"
+            name="courseTitle"
+            value={courseTitle}
+            onChange={handleChange}
+            className="border w-full rounded-lg p-2"
+          />
+        </div>
 
-          <div className="flex flex-row">
-            <p className="border p-4">Course Instructor</p>
-            <input
-              type="text"
-              name="courseInstructor"
-              value={courseInstructor}
-              onChange={handleChange}
-              className="border p-4"
-            />
-          </div>
-          {docType ? (
-            <>
-              {members.map((form, index) => {
-                return (
-                  <div key={index} className="flex flex-row">
-                    <p className="border p-4">Member {index + 1}</p>
-                    <input
-                      className="border p-4"
-                      name="name"
-                      placeholder="Name"
-                      onChange={(event) => handleFormChange(event, index)}
-                      value={form.name}
-                    />
+        <div className="flex flex-row gap-5 p-5 self-start w-full">
+          <p className="text-2xl font-bold ">Course Instructor</p>
+          <input
+            type="text"
+            name="courseInstructor"
+            value={courseInstructor}
+            onChange={handleChange}
+            className="border w-full rounded-lg p-2"
+          />
+        </div>
+        {docType ? (
+          <>
+            {members.map((form, index) => {
+              return (
+                <div
+                  key={index}
+                  className="flex flex-row gap-4 p-5 self-start w-full items-center"
+                >
+                  <p className="text-2xl font-bold w-64">Member {index + 1}</p>
+                  <input
+                    className="border w-full rounded-lg p-3 "
+                    name="name"
+                    onChange={(event) => handleFormChange(event, index)}
+                    value={form.name}
+                  />
+                  {members.length > 1 && (
                     <button
-                      className="border p-4"
+                      className="bg-blue-600 text-white p-3 hover:bg-blue-300 rounded-xl font-semibold"
                       onClick={() => removeFields(index)}
                     >
                       Remove
                     </button>
-                  </div>
-                );
-              })}
-              {members.length < 5 && (
-                <button onClick={addFields}>Add More..</button>
-              )}
-            </>
-          ) : (
-            <div className="flex flex-row">
-              <p className="border p-4">Student's Full Name</p>
-              <input
-                className="border p-4"
-                name="name"
-                placeholder="Name"
-                onChange={(event) => handleFormChange(event, 0)}
-                value={members[0].name}
-              />
-            </div>
-          )}
+                  )}
+                </div>
+              );
+            })}
+            {members.length < 5 && (
+              <button
+                className="mt-6 bg-blue-600 text-white p-2 hover:bg-blue-300 rounded-xl  font-semibold w-[560px] self-center "
+                onClick={(e) => addFields(e)}
+              >
+                Add More Members
+              </button>
+            )}
+          </>
+        ) : (
+          <div className="flex flex-row gap-4 p-5 self-start w-full items-center">
+            <p className="text-2xl font-bold w-64 ">Student's Full Name</p>
+            <input
+              className="border w-full rounded-lg p-3 "
+              name="name"
+              placeholder="Name"
+              onChange={(event) => handleFormChange(event, 0)}
+              value={members[0].name}
+            />
+          </div>
+        )}
 
-          <br />
-          <button onClick={(e) => generatePdf(e)}>Submit</button>
-        </form>
-      </div>
+        <button
+          className="mt-20 text-2xl bg-blue-600 text-white px-10 py-5 hover:bg-blue-300 rounded-xl font-semibold self-center "
+          onClick={(e) => generatePdf(e)}
+        >
+          Create PDF!
+        </button>
+      </form>
 
       {pdf && (
-        <embed src={pdf} type="application/pdf" width="500px" height="500px" />
+        <embed src={pdf} type="application/pdf" width="600px" height="600px" />
       )}
     </main>
   );
