@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { degrees, PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import { PDFDocument } from "pdf-lib";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -29,7 +29,8 @@ const IndivPDF = async (req: NextApiRequest, res: NextApiResponse) => {
 
   member1 = members[0].name;
 
-  const pdfBuffer = fs.readFileSync("public/COA/COAIndiv.pdf");
+  const filePath = path.join(process.cwd(), "COAIndiv.pdf");
+  const pdfBuffer = fs.readFileSync(filePath);
 
   // Embed the existing PDF into the new document
   const pdfDoc = await PDFDocument.load(pdfBuffer);

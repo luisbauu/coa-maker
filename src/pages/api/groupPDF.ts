@@ -1,5 +1,6 @@
 import fs from "fs";
 import { PDFDocument } from "pdf-lib";
+import path from "path";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -49,7 +50,8 @@ const GroupPDF = async (req: NextApiRequest, res: NextApiResponse) => {
     member5 = members[4].name;
   }
 
-  const pdfBuffer = fs.readFileSync("public/COA/COAGroup.pdf");
+  const filePath = path.join(process.cwd(), "COAGroup.pdf");
+  const pdfBuffer = fs.readFileSync(filePath);
 
   // Embed the existing PDF into the new document
   const pdfDoc = await PDFDocument.load(pdfBuffer);

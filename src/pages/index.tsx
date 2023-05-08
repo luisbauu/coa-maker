@@ -333,7 +333,7 @@ export default function Home() {
             height="600px"
           />
         )}
-        <p className="self-center text-xs py-2">
+        <p className="self-center text-xs py-3">
           Developed by Jose Luis Bautista
         </p>
       </form>
