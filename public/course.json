@@ -1,0 +1,566 @@
+[
+  {
+    "id": 0,
+    "code": "CS 197",
+    "courseTitle": "INTEGRATIVE PROJECT",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 2,
+    "code": "CSCI 21",
+    "courseTitle": "INTRODUCTION TO PROGRAMMING I",
+    "courseInstructor": "MEDALLA, ALBERTO H."
+  },
+  {
+    "id": 3,
+    "code": "CSCI 22",
+    "courseTitle": "INTRODUCTION TO PROGRAMMING II",
+    "courseInstructor": "SUGAY, JESSICA O."
+  },
+  {
+    "id": 4,
+    "code": "CSCI 40",
+    "courseTitle": "SOFTWARE TOOLS AND DEVELOPMENT FRAMEWORKS",
+    "courseInstructor": "AGAPITO, JENILYN L."
+  },
+  {
+    "id": 5,
+    "code": "CSCI 42",
+    "courseTitle": "INTRODUCTION TO SOFTWARE ENGINEERING",
+    "courseInstructor": "BAUTISTA, Neil Daniel"
+  },
+  {
+    "id": 6,
+    "code": "CSCI 51.01",
+    "courseTitle": "OPERATING SYSTEMS, LECTURE",
+    "courseInstructor": "BALAGUER, Giovanni Angelo"
+  },
+  {
+    "id": 7,
+    "code": "CSCI 51.02",
+    "courseTitle": "OPERATING SYSTEMS, LABORATORY",
+    "courseInstructor": "ABU, PATRICIA ANGELA R."
+  },
+  {
+    "id": 8,
+    "code": "CSCI 61",
+    "courseTitle": "INFORMATION ASSURANCE AND SECURITY",
+    "courseInstructor": "MAGPANTAY, Abraham"
+  },
+  {
+    "id": 9,
+    "code": "CSCI 71",
+    "courseTitle": "THEORY OF COMPUTATION",
+    "courseInstructor": "GUADALUPE, Brian Christopher"
+  },
+  {
+    "id": 10,
+    "code": "CSCI 111",
+    "courseTitle": "INTRODUCTION TO ARTIFICIAL INTELLIGENCE",
+    "courseInstructor": "RUIZ, Camille Marie, VERGARA, JOHN PAUL C."
+  },
+  {
+    "id": 11,
+    "code": "CSCI 112",
+    "courseTitle": "CONTEMPORARY DATABASES",
+    "courseInstructor": "MEDALLA, ALBERTO H."
+  },
+  {
+    "id": 12,
+    "code": "CSCI 113i",
+    "courseTitle": "BUSINESS INTELLIGENCE",
+    "courseInstructor": "TAN, RENZO ROEL P."
+  },
+  {
+    "id": 13,
+    "code": "CSCI 115",
+    "courseTitle": "COMPUTER SIMULATION AND MODELING",
+    "courseInstructor": "ABU, PATRICIA ANGELA R., CHAN SHIO, CHRISTIAN PAUL O., SANTOS, GABRIEL LORENZO I."
+  },
+  {
+    "id": 14,
+    "code": "CSCI 117i",
+    "courseTitle": "DATA VISUALIZATION",
+    "courseInstructor": "RAMOS, Robin Kamille"
+  },
+  {
+    "id": 15,
+    "code": "CSCI 130",
+    "courseTitle": "INTRODUCTION TO MULTIMEDIA SYSTEMS",
+    "courseInstructor": "SANTOS, JOHN MICHAEL B."
+  },
+  {
+    "id": 16,
+    "code": "CSCI 133",
+    "courseTitle": "3D ANIMATION AND MODELING",
+    "courseInstructor": "SANTOS, JOHN MICHAEL B."
+  },
+  {
+    "id": 17,
+    "code": "CSCI 134.1i",
+    "courseTitle": "INTERACTIVE SOUND ART INSTALLATION",
+    "courseInstructor": "AMANTE, Francesco"
+  },
+  {
+    "id": 18,
+    "code": "CSCI 140",
+    "courseTitle": "INSTRUCTIONAL SOFTWARE DESIGN AND DEVELOPMENT",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 19,
+    "code": "CSCI 142i",
+    "courseTitle": "HUMAN COMPUTER INTERACTION",
+    "courseInstructor": "CASANO, JONATHAN DL."
+  },
+  {
+    "id": 20,
+    "code": "CSCI 173",
+    "courseTitle": "BIG DATA PROCESSING",
+    "courseInstructor": "YU, WILLIAM EMMANUEL S."
+  },
+  {
+    "id": 21,
+    "code": "CSCI 181.03",
+    "courseTitle": "SPECIAL TOPICS IN SOFTWARE ENGINEERING: iOS DEVELOPMENT",
+    "courseInstructor": "LIGUNAS, Luis Rainier"
+  },
+  {
+    "id": 22,
+    "code": "CSCI 182.06",
+    "courseTitle": "NATURAL LANGUAGE PROCESSING",
+    "courseInstructor": "ALAMPAY, RAPHAEL B."
+  },
+  {
+    "id": 23,
+    "code": "CSCI 184.03",
+    "courseTitle": "SPECIAL TOPICS IN NETWORKS AND SECURITY: CRYPTOGRAPHY AND NETWORK SECURITY",
+    "courseInstructor": "GUADALUPE, Brian Christopher"
+  },
+  {
+    "id": 24,
+    "code": "CSCI 197",
+    "courseTitle": "PRACTICUM",
+    "courseInstructor": "SUGAY, JESSICA O."
+  },
+  {
+    "id": 25,
+    "code": "CSCI 199.1",
+    "courseTitle": "THESIS WRITING I",
+    "courseInstructor": "CORONEL, ANDREI D."
+  },
+  {
+    "id": 26,
+    "code": "CSCI 199.2",
+    "courseTitle": "THESIS WRITING II",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T., SUGAY, JESSICA O."
+  },
+  {
+    "id": 27,
+    "code": "CSCI 199.3",
+    "courseTitle": "THESIS WRITING III",
+    "courseInstructor": "ABU, PATRICIA ANGELA R."
+  },
+  {
+    "id": 28,
+    "code": "CSCI 203",
+    "courseTitle": "THEORY OF AUTOMATA AND FORMAL LANGUAGES",
+    "courseInstructor": "VERGARA, JOHN PAUL C."
+  },
+  {
+    "id": 29,
+    "code": "CSCI 204",
+    "courseTitle": "COMPUTER ARCHITECTURE AND OPERATING SYSTEMS",
+    "courseInstructor": "ABU, PATRICIA ANGELA R."
+  },
+  {
+    "id": 30,
+    "code": "CSCI 207",
+    "courseTitle": "ADVANCED SYSTEMS ANALYSIS AND DESIGN",
+    "courseInstructor": "TEE, HANNAH ELYSE U."
+  },
+  {
+    "id": 31,
+    "code": "CSCI 209",
+    "courseTitle": "COMPUTER NETWORKS AND OPERATING SYSTEMS",
+    "courseInstructor": "CHATO, OLIVER V."
+  },
+  {
+    "id": 32,
+    "code": "CSCI 211",
+    "courseTitle": "INTRODUCTION TO ARTIFICIAL INTELLIGENCE",
+    "courseInstructor": "VERGARA, JOHN PAUL C."
+  },
+  {
+    "id": 33,
+    "code": "CSCI 215",
+    "courseTitle": "COMPUTER SIMULATIONS",
+    "courseInstructor": "ABU, PATRICIA ANGELA R., ALAMPAY, RAPHAEL B., CHAN SHIO, CHRISTIAN PAUL O."
+  },
+  {
+    "id": 34,
+    "code": "CSCI 217",
+    "courseTitle": "DATA VISUALIZATION",
+    "courseInstructor": "TEE, HANNAH ELYSE U."
+  },
+  {
+    "id": 35,
+    "code": "CSCI 234.1",
+    "courseTitle": "SEMINAR:MULTIMEDIA APPLICATIONS",
+    "courseInstructor": "AMANTE, Francesco"
+  },
+  {
+    "id": 36,
+    "code": "CSCI 240",
+    "courseTitle": "INSTRUCTIONAL SOFTWARE DESIGN AND DEVELOPMENT",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 37,
+    "code": "CSCI 241",
+    "courseTitle": "LEARNING THEORY AND INSTRUCTIONAL SOFTWARE DESIGN",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 38,
+    "code": "CSCI 242",
+    "courseTitle": "HUMAN COMPUTER INTERACTION",
+    "courseInstructor": "AGAPITO, JENILYN L."
+  },
+  {
+    "id": 39,
+    "code": "CSCI 271",
+    "courseTitle": "DATA MINING",
+    "courseInstructor": "VERGARA, JOHN PAUL C."
+  },
+  {
+    "id": 40,
+    "code": "CSCI 273",
+    "courseTitle": "BIG DATA PROCESSING",
+    "courseInstructor": "YU, WILLIAM EMMANUEL S."
+  },
+  {
+    "id": 41,
+    "code": "CSCI 282.06",
+    "courseTitle": "NATURAL LANGUAGE PROCESSING",
+    "courseInstructor": "ALAMPAY, RAPHAEL B."
+  },
+  {
+    "id": 42,
+    "code": "CSCI 296",
+    "courseTitle": "COMPREHENSIVE EXAMINATIONS",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 43,
+    "code": "CSCI 298.1",
+    "courseTitle": "INDEPENDENT PROJECT I",
+    "courseInstructor": "CORONEL, ANDREI D., DE VERA, JOSE ALFREDO III A."
+  },
+  {
+    "id": 44,
+    "code": "CSCI 298.4",
+    "courseTitle": "INNOVATION PROJECT 2",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 45,
+    "code": "CSCI 298.6",
+    "courseTitle": "DATA SCIENCE PROJECT II",
+    "courseInstructor": "GO, CLARK KENDRICK C., VERGARA, JOHN PAUL C."
+  },
+  {
+    "id": 46,
+    "code": "CSCI 299.1",
+    "courseTitle": "THESIS I",
+    "courseInstructor": "ABU, PATRICIA ANGELA R."
+  },
+  {
+    "id": 47,
+    "code": "CSCI 299.2",
+    "courseTitle": "THESIS II",
+    "courseInstructor": "ABU, PATRICIA ANGELA R."
+  },
+  {
+    "id": 48,
+    "code": "CSCI 299.4",
+    "courseTitle": "ORAL DEFENSE",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 49,
+    "code": "CSCI 299.5",
+    "courseTitle": "RESIDENCY FOR MASTER'S LEVEL",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 50,
+    "code": "CSCI 299.6",
+    "courseTitle": "FINAL PAPER SUBMISSION",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 51,
+    "code": "CSCI 299.7",
+    "courseTitle": "FINAL PAPER SUBMISSION",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 52,
+    "code": "CSCI 314",
+    "courseTitle": "SPECIAL TOPICS IN COMPUTER SCIENCE THEORY: PATTERN RECOGNITION",
+    "courseInstructor": "FERNANDEZ, PROCESO, JR. L."
+  },
+  {
+    "id": 53,
+    "code": "CSCI 315",
+    "courseTitle": "SPECIAL TOPICS IN COMPUTER SCIENCE THEORY: COMPUTER SIMULATION",
+    "courseInstructor": "FERNANDEZ, PROCESO, JR. L."
+  },
+  {
+    "id": 54,
+    "code": "CSCI 347",
+    "courseTitle": "SPECIAL TOPICS IN COMPUTER SCIENCE THEORY: ARTIFICIAL INTELLIGENCE IN EDUCATION",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 55,
+    "code": "CSCI 371",
+    "courseTitle": "SPECIAL TOPICS IN COMPUTER SCIENCE THEORY: DATA MINING",
+    "courseInstructor": "TO BE ARRANGED"
+  },
+  {
+    "id": 56,
+    "code": "CSCI 390.1",
+    "courseTitle": "ADVANCED RESEARCH METHODS I",
+    "courseInstructor": "FERNANDEZ, PROCESO, JR. L."
+  },
+  {
+    "id": 57,
+    "code": "CSCI 390.2",
+    "courseTitle": "ADVANCED RESEARCH METHODS II",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 58,
+    "code": "CSCI 390.4",
+    "courseTitle": "ADVANCED RESEARCH METHODS IV",
+    "courseInstructor": "YU, WILLIAM EMMANUEL S."
+  },
+  {
+    "id": 59,
+    "code": "CSCI 396",
+    "courseTitle": "COMPREHENSIVE EXAMINATIONS",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 60,
+    "code": "CSCI 399.1",
+    "courseTitle": "DISSERTATION I",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 61,
+    "code": "CSCI 399.2",
+    "courseTitle": "DISSERTATION II",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 62,
+    "code": "CSCI 399.4",
+    "courseTitle": "ORAL DEFENSE",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 63,
+    "code": "CSCI 399.5",
+    "courseTitle": "RESIDENCY FOR DOCTORAL LEVEL",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 64,
+    "code": "CSCI 399.6",
+    "courseTitle": "FINAL PAPER SUBMISSION",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 65,
+    "code": "CSCI 399.7",
+    "courseTitle": "FINAL PAPER SUBMISSION",
+    "courseInstructor": "TBA, -"
+  },
+  {
+    "id": 66,
+    "code": "GDEV 21i",
+    "courseTitle": "INTERDISCIPLINARY APPROACHES TO GAMES AND GAME DESIGN I",
+    "courseInstructor": "AGUSTIN, ROY TRISTAN B., ELICANO, ANTONIO RAFAEL N., JAMENDANG, JR., YOLANDO B., SAMACO, JAPHETH DUANE C."
+  },
+  {
+    "id": 67,
+    "code": "GDEV 30",
+    "courseTitle": "COMPUTER GRAPHICS PROGRAMMING",
+    "courseInstructor": "VIDAL, ERIC CESAR JR. E."
+  },
+  {
+    "id": 68,
+    "code": "GDEV 32",
+    "courseTitle": "ADVANCED COMPUTER GRAPHICS THEORY AND PROGRAMMING",
+    "courseInstructor": "VIDAL, ERIC CESAR JR. E."
+  },
+  {
+    "id": 69,
+    "code": "GDEV 42",
+    "courseTitle": "PC AND CONSOLE GAME DEVELOPMENT II",
+    "courseInstructor": "LACSON, Jose Teodoro"
+  },
+  {
+    "id": 70,
+    "code": "GDEV 198.3",
+    "courseTitle": "INTEGRATIVE PROJECT 3",
+    "courseInstructor": "DIY, WALFRIDO DAVID A., RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 71,
+    "code": "ISCS 30.14",
+    "courseTitle": "GUIDED STUDIES IN GENRE-SPECIFIC GAME DEVELOPMENT",
+    "courseInstructor": "DIY, WALFRIDO DAVID A."
+  },
+  {
+    "id": 72,
+    "code": "ISCS 30.16",
+    "courseTitle": "GUIDED STUDIES IN DESIGNING DIGITAL EXPERIENCES FOR MUSEUMS",
+    "courseInstructor": "ANTIPORDA, MA. ALYYANA P."
+  },
+  {
+    "id": 73,
+    "code": "ISCS 30.18",
+    "courseTitle": "GUIDED STUDIES IN DATA PREPROCESSING",
+    "courseInstructor": "RODRIGO, MARIA MERCEDES T."
+  },
+  {
+    "id": 74,
+    "code": "ISCS 30.23",
+    "courseTitle": "GUIDED STUDIES IN CONTAINERS I: CONTAINERIZING APPLICATIONS",
+    "courseInstructor": "SAAVEDRA, MIGUEL ZENON NICANOR L."
+  },
+  {
+    "id": 75,
+    "code": "ISCS 30.28",
+    "courseTitle": "GUIDED STUDIES IN CONTINUOUS INTEGRATION AND DEPLOYMENT",
+    "courseInstructor": "SAAVEDRA, MIGUEL ZENON NICANOR L."
+  },
+  {
+    "id": 76,
+    "code": "ISCS 30.36",
+    "courseTitle": "GUIDED STUDIES IN WEB ACCESSIBILITY",
+    "courseInstructor": "DE LA CRUZ, ROMELL IAN B."
+  },
+  {
+    "id": 77,
+    "code": "ISCS 30.37",
+    "courseTitle": "GUIDED STUDIES IN WEB FRAMEWORKS",
+    "courseInstructor": "DE LA CRUZ, ROMELL IAN B."
+  },
+  {
+    "id": 78,
+    "code": "ISCS 30.45",
+    "courseTitle": "GUIDED STUDIES IN DESIGN THINKING FOR I.T. SOLUTIONS",
+    "courseInstructor": "CORONEL, ANDREI D."
+  },
+  {
+    "id": 79,
+    "code": "ISCS 30.53",
+    "courseTitle": "GUIDED STUDIES IN DECLARATIVE FRAMEWORK DESIGN AND IMPLEMENTATION",
+    "courseInstructor": "JONGKO, JEFFREY J."
+  },
+  {
+    "id": 80,
+    "code": "ISCS 30.66",
+    "courseTitle": "GUIDED STUDIES IN DEVELOPING DECENTRALIZED APPLICATIONS ON PUBLIC BLOCKCHAINS",
+    "courseInstructor": "PULMANO, CHRISTIAN E."
+  },
+  {
+    "id": 81,
+    "code": "ISCS 30.67",
+    "courseTitle": "GUIDED STUDIES IN ARCHITECTING PRIVATE BLOCKCHAIN NETWORKS",
+    "courseInstructor": "PULMANO, CHRISTIAN E., TAMAYO, Lenard Paulo"
+  },
+  {
+    "id": 82,
+    "code": "MSYS 22",
+    "courseTitle": "INTRODUCTION TO PROGRAMMING II",
+    "courseInstructor": "AGLORO, GUILLERMO PAOLO JR. M."
+  },
+  {
+    "id": 83,
+    "code": "MSYS 40",
+    "courseTitle": "BUSINESS APPLICATIONS DEVELOPMENT 1",
+    "courseInstructor": "DE VERA, JOSE ALFREDO III A."
+  },
+  {
+    "id": 84,
+    "code": "MSYS 42",
+    "courseTitle": "BUSINESS APPLICATIONS DEVELOPMENT 3",
+    "courseInstructor": "AGLORO, GUILLERMO PAOLO JR. M."
+  },
+  {
+    "id": 85,
+    "code": "MSYS 51",
+    "courseTitle": "INFORMATION TECHNOLOGY INFRASTRUCTURE",
+    "courseInstructor": "MAGUYON, ARIEL A."
+  },
+  {
+    "id": 86,
+    "code": "MSYS 112",
+    "courseTitle": "ENTERPRISE SYSTEMS PLANNING",
+    "courseInstructor": "YABUT, Ervy Joseph"
+  },
+  {
+    "id": 87,
+    "code": "MSYS 116",
+    "courseTitle": "APPLICATIONS IN MEDICINE AND PUBLIC HEALTH INFORMATICS",
+    "courseInstructor": "TAMAYO, Lenard Paulo"
+  },
+  {
+    "id": 88,
+    "code": "MSYS 121i",
+    "courseTitle": "APPLIED DIGITAL LAW AND ETHICS",
+    "courseInstructor": "IMBONG, JO AUREA M."
+  },
+  {
+    "id": 89,
+    "code": "MSYS 142",
+    "courseTitle": "INFORMATION TECHNOLOGY GOVERNANCE",
+    "courseInstructor": "LOVENIA, SANDRA FRANCESCA A."
+  },
+  {
+    "id": 90,
+    "code": "MSYS 197",
+    "courseTitle": "PRACTICUM",
+    "courseInstructor": "SUGAY, JESSICA O."
+  },
+  {
+    "id": 91,
+    "code": "MSYS 198.1",
+    "courseTitle": "CAPSTONE PROJECT 1",
+    "courseInstructor": "LOVENIA, SANDRA FRANCESCA A."
+  },
+  {
+    "id": 92,
+    "code": "MSYS 198.3",
+    "courseTitle": "CAPSTONE PROJECT 3",
+    "courseInstructor": "LOVENIA, SANDRA FRANCESCA A."
+  },
+  {
+    "id": 93,
+    "code": "MSYS 199.3",
+    "courseTitle": "THESIS WRITING 3",
+    "courseInstructor": "SAAVEDRA, MIGUEL ZENON NICANOR L."
+  },
+  {
+    "id": 94,
+    "code": "MSYS 171",
+    "courseTitle": "IT SECURITY AND RISK MANAGEMENT",
+    "courseInstructor": "MAGUYON, ARIEL A."
+  }
+]
