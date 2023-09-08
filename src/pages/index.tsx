@@ -7,18 +7,6 @@ import CourseInstructorJSON from "../../public/courseInstructors.json";
 import Autocomplete from "@/components/Autocomplete";
 import AutocompleteInstructor from "@/components/AutocompleteInstructor";
 
-type Item = {
-  id: number;
-  code: string;
-  courseTitle: string;
-  courseInstructor: string;
-};
-
-type Item2 = {
-  id: number;
-  name: string;
-};
-
 export default function Home() {
   const [members, setMembers] = useState([{ name: "" }]);
   const [title, setTitle] = useState<string>("");
@@ -35,6 +23,7 @@ export default function Home() {
 
   const [docType, setDocType] = useState(true);
   const [pdf, setPdf] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -130,24 +119,32 @@ export default function Home() {
       body: JSON.stringify(requestBody),
     };
 
-    if (docType) {
-      res = await fetch("/api/groupPDF", requestOptions);
-    } else {
-      res = await fetch("/api/indivPDF", requestOptions);
+    try {
+      const url = docType ? "/api/groupPDF" : "/api/indivPDF";
+      res = await fetch(url, requestOptions);
+
+      if (!res.ok) {
+        throw new Error("PDF generation failed");
+      }
+
+      const pdfBlob = await res.blob();
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+      setPdf(pdfUrl);
+
+      download(pdfBlob, "COA.pdf", "application/pdf");
+    } catch (error) {
+      console.error("PDF generation error:", error);
+    } finally {
+      setIsLoading(false);
     }
-
-    const pdfBlob = await res.blob();
-
-    const pdfUrl = URL.createObjectURL(pdfBlob);
-    setPdf(pdfUrl);
-
-    download(pdfBlob, "COA.pdf", "application/pdf");
   };
 
   return (
     <main className="flex min-h-screen flex-col items-center align-middle py-10">
       <Toaster />
-      <h1 className="text-6xl font-bold py-5">DISCS COA Maker v1</h1>
+      <h1 className="text-6xl font-bold py-5">
+        DISCS COA Maker v1<span className="text-xs">.1</span>
+      </h1>
       <p className="text-xl font-bold text-center w-[600px]">
         A simple tool to generate a Certificate of Authorship for all your
         academic requirements.
@@ -367,6 +364,12 @@ export default function Home() {
         >
           Create PDF!
         </button>
+        {isLoading && (
+          <div className="absolute top-0 left-0 w-full h-full bg-opacity-50 bg-gray-200 flex justify-center items-center">
+            <p>Loading...</p>
+          </div>
+        )}
+
         {pdf && (
           <embed
             src={pdf}
