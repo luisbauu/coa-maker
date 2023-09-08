@@ -2,9 +2,10 @@ import { useState } from "react";
 import { ChangeEvent } from "react";
 import download from "downloadjs";
 import toast, { Toaster } from "react-hot-toast";
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import CoursesJSON from "../../public/course.json";
 import CourseInstructorJSON from "../../public/courseInstructors.json";
+import Autocomplete from "@/components/Autocomplete";
+import AutocompleteInstructor from "@/components/AutocompleteInstructor";
 
 type Item = {
   id: number;
@@ -79,22 +80,6 @@ export default function Home() {
     let data = [...members];
     data.splice(index, 1);
     setMembers(data);
-  };
-
-  const handleAutocompleteSelect = (name: string, item: string) => {
-    const inputMap: Record<
-      string,
-      React.Dispatch<React.SetStateAction<string>>
-    > = {
-      courseCodeSection: setCourseCodeSection,
-      courseTitle: setCourseTitle,
-      courseInstructor: setCourseInstructor,
-    };
-
-    if (name == "courseCodeSection") {
-    }
-
-    inputMap[name](item);
   };
 
   const handleSectionChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -189,7 +174,8 @@ export default function Home() {
             name="title"
             value={title}
             onChange={handleChange}
-            className="border w-full rounded-lg p-2"
+            className="border w-full rounded-lg p-7"
+            placeholder="Enter title here"
           />
         </div>
         <p className=" self-center text-2xl font-bold pb-3">Type</p>
@@ -283,82 +269,46 @@ export default function Home() {
             name="sources"
             value={sources}
             onChange={handleChange}
-            className="border w-full rounded-lg p-2"
+            className="border w-full rounded-lg p-7"
+            placeholder="Enter sources here"
           />
         </div>
 
-        <div className="flex flex-row gap-5 p-5 self-start w-full">
+        <div className="flex flex-row gap-3 p-5 self-start w-full">
           <p className="text-2xl font-bold ">Course Code & Section</p>
 
-          <div className="w-5/6">
-            <ReactSearchAutocomplete<Item>
-              items={CoursesJSON}
-              fuseOptions={{ keys: ["code"] }} // Search on both fields
-              resultStringKeyName="code" // String to display in the results
-              onSelect={(item) => {
-                handleAutocompleteSelect("courseCodeSection", item.code);
-                handleAutocompleteSelect("courseTitle", item.courseTitle);
-              }}
-              showIcon={false}
-              styling={{
-                borderRadius: "0.5rem",
-                boxShadow: "none",
-                height: "4rem",
-                zIndex: 3,
-              }}
-            />
+          <div className="w-4/6">
+            <Autocomplete handleChange={handleChange} data={CoursesJSON} />
           </div>
+
           <input
             type="text"
             name="section"
             value={section}
             onChange={handleSectionChange}
-            className="border w-1/6 rounded-lg p-2"
+            className="border w-2/6 rounded-lg  text-center"
+            placeholder="Section"
           />
         </div>
 
         <div className="flex flex-row gap-5 p-5 self-start w-full">
           <p className="text-2xl font-bold  ">Course Title</p>
-          {/*<div className="w-full">
-           <ReactSearchAutocomplete<Item>
-              items={CoursesJSON}
-              fuseOptions={{ keys: ["courseTitle"] }} // Search on both fields
-              resultStringKeyName="courseTitle" // String to display in the results
-              onSelect={(item: Item) =>
-                handleAutocompleteSelect("courseTitle", item.courseTitle)
-              }
-              showIcon={false}
-              styling={{
-                borderRadius: "0.5rem",
-                boxShadow: "none",
-                height: "4rem",
-                zIndex: 2,
-              }}
-            />
-          </div> */}
           <input
             type="text"
             name="courseTitle"
             value={courseTitle}
             onChange={handleChange}
-            className="border w-full rounded-lg p-2"
+            className="border w-full rounded-lg p-7"
+            placeholder="Enter course title here"
           />
         </div>
 
         <div className="flex flex-row gap-5 p-5 self-start w-full">
           <p className="text-2xl font-bold ">Course Instructor</p>
           <div className="w-full">
-            <ReactSearchAutocomplete<Item2>
-              items={CourseInstructorJSON}
-              onSelect={(item: Item2) =>
-                handleAutocompleteSelect("courseInstructor", item.name)
-              }
-              showIcon={false}
-              styling={{
-                borderRadius: "0.5rem",
-                boxShadow: "none",
-                height: "4rem",
-              }}
+            <AutocompleteInstructor
+              data={CourseInstructorJSON}
+              handleChange={handleChange}
             />
           </div>
         </div>
@@ -372,10 +322,11 @@ export default function Home() {
                 >
                   <p className="text-2xl font-bold w-64">Member {index + 1}</p>
                   <input
-                    className="border w-full rounded-lg p-3 "
+                    className="border w-full rounded-lg p-7"
                     name="name"
                     onChange={(event) => handleFormChange(event, index)}
                     value={form.name}
+                    placeholder="Enter member's name"
                   />
                   {members.length > 1 && (
                     <button
@@ -401,10 +352,11 @@ export default function Home() {
           <div className="flex flex-row gap-4 p-5 self-start w-full items-center">
             <p className="text-2xl font-bold w-64 ">Student&apos;s Full Name</p>
             <input
-              className="border w-full rounded-lg p-3 "
+              className="border w-full rounded-lg p-7 "
               name="name"
               onChange={(event) => handleFormChange(event, 0)}
               value={members[0].name}
+              placeholder="Enter name"
             />
           </div>
         )}
