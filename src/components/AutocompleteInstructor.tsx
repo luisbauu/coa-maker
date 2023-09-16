@@ -21,8 +21,10 @@ const AutocompleteInstructor: React.FC<AutocompleteProps> = ({
 
   const handleSelect = (course: courseInstructorT) => {
     setSelectedCode(course.name);
-    setSearchTerm(course.name); // Display the selected code in the input field
-    handleChange({ target: { name: "courseInstructor", value: course.name } });
+    ~setSearchTerm(course.name); // Display the selected code in the input field
+    handleChange({
+      target: { name: "courseInstructor", value: course.name },
+    } as ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
